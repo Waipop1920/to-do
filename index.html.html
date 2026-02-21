@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Workshop - To Do List</title>
+
+  <style>
+    body{
+    font-family: Arial;
+    background:#f4f4f4;
+    text-align:center;
+}
+
+.container{
+    background:white;
+    width:350px;
+    margin:auto;
+    margin-top:50px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+    padding:10px;
+    width:70%;
+}
+
+button{
+    padding:10px;
+    cursor:pointer;
+}
+
+li{
+    list-style:none;
+    background:#eee;
+    margin:5px;
+    padding:10px;
+    border-radius:5px;
+    display:flex;
+    justify-content:space-between;
+}
+  </style>
+
+  
+</head>
+<body>
+  <div class="container">
+<h2>To Do List</h2>
+
+<input id="taskInput" placeholder="พิมพ์งานที่ต้องทำ">
+<button onclick="addTask()">เพิ่ม</button>
+
+<ul id="taskList"></ul>
+</div>
+
+  <script>
+    function addTask(){
+
+    let input = document.getElementById("taskInput")
+    let task = input.value
+
+    if(task === ""){
+        alert("กรุณาพิมพ์งานก่อน")
+        return
+    }
+
+    let li = document.createElement("li")
+    li.textContent = task
+
+    let del = document.createElement("button")
+    del.textContent = "ลบ"
+    del.onclick = function(){
+        li.remove()
+    }
+
+    li.appendChild(del)
+
+    document.getElementById("taskList").appendChild(li)
+
+    input.value = ""
+}
+  </script>
+</body>
+</html>
